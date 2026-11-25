@@ -5,11 +5,13 @@ export class CatalogPage {
 
   async search(query) {
     // BEGIN
+    await this.page.getByPlaceholder(/search/i).fill(query);
     // END
   }
 
   async selectBrand(brand) {
     // BEGIN
+    await this.page.getByRole('checkbox', { name: brand, exact: true }).check();
     // END
   }
 
@@ -20,6 +22,7 @@ export class CatalogPage {
 
   async nextPage() {
     // BEGIN
+    await this.page.getByRole('link', { name: 'Next', exact: true }).first().click();
     // END
   }
 }
